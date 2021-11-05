@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Chers Documentation",
+    "description": "This is an API Rent",
+    "version": "1.0.0",
+    "contact": {
+      "email": "descubra.app@gmail.com",
+      "github": "https://github.com/lCherS"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create an User",
+        "description": "Create a new User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "type": "object",
+                "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+                },
+                "example": {
+                  "name": "Lucas Cherez",
+                  "email": "descubra.app@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "User already exists!"
+          }
+        }
+      }
+    }
+  }
+
+}
