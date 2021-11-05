@@ -7,6 +7,10 @@ class ShowUserProfileController {
 
   handle(request: Request, response: Response): Response {
     // Complete aqui
+    const { user_id } = request.params;
+    const user = this.showUserProfileUseCase.execute({ user_id });
+
+    return response.json(user);
   }
 }
 

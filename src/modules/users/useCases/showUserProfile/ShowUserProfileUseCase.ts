@@ -10,6 +10,14 @@ class ShowUserProfileUseCase {
 
   execute({ user_id }: IRequest): User {
     // Complete aqui
+    const UserExists = this.usersRepository.findById(user_id);
+
+    if (UserExists)
+      throw new Error(
+        JSON.stringify({ status: 404, message: "User Not found" })
+      );
+
+    return UserExists;
   }
 }
 

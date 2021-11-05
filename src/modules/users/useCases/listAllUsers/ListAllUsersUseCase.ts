@@ -10,6 +10,14 @@ class ListAllUsersUseCase {
 
   execute({ user_id }: IRequest): User[] {
     // Complete aqui
+    const user = this.usersRepository.findById(user_id);
+
+    if (!user.admin)
+      throw new Error(JSON.stringify({ status: 400, error: "Not allowed" }));
+
+    const users = this.usersRepository.list();
+
+    return users;
   }
 }
 

@@ -10,6 +10,14 @@ class TurnUserAdminUseCase {
 
   execute({ user_id }: IRequest): User {
     // Complete aqui
+    const UserExists = this.usersRepository.findById(user_id);
+
+    if (UserExists)
+      throw new Error(JSON.stringify({ status: 404, message: "ID invalid!" }));
+
+    const NewAdmin = this.usersRepository.turnAdmin(UserExists);
+
+    return NewAdmin;
   }
 }
 
